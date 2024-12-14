@@ -118,8 +118,9 @@ li > label {
 li >    input[type="text"] {
     width: 226px
 }
-button.delete img {
+.delete{
     height: 2em;
+    background: url(/remove.svg) no-repeat center;
     transform: rotateZ(45deg);
     transition: transform 200ms ease-in;
 }
