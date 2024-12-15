@@ -4,16 +4,16 @@ page {
     color: #333;
     font-family: Lato, sans-serif;
 }
-.matrix__container {
+.matrix {
     width: 500px;
     margin: 0 auto;
     display: block;
     text-align: right;
 }
-.matrix__container_img {
+.matrix__img {
     width: 100%;
 }
-.matrix__container_inf {
+.matrix__link-inf {
     font-family: fantasy, cursive;
 }
 
