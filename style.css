@@ -116,7 +116,7 @@
 
 .delete{
   height: 2em;
-  background: url(/remove.svg) no-repeat center;
+  background: url(assets/remove.svg) no-repeat center;
   transform: rotateZ(45deg);
   transition: transform 200ms ease-in;
 }
