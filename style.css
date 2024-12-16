@@ -1,4 +1,4 @@
-/* Basic Style */
+
 .page {
   background-color: #f8f8f8;
   color: #333;
@@ -28,49 +28,63 @@
   margin: 16px 0;
 }
 
-.task {
-  width: 56%;
-  display: inline-block;
-  flex-grow: 1;
-}
 
-.task-row-wrapper {
-  display: flex;
-}
-
-ul {
-  margin:0;
-  padding: 0px;
-}
-
-li, 
-h3 {
-  list-style:none;
-}
-
-input, 
-button {
-  outline:none;
-}
-
-button {
+.form__button {
   background: none;
+  width: 60px;
   border: 0px;
   color: #888;
   font-size: 15px;
-  width: 60px;
-  font-family: Lato, sans-serif;
+  font-family: "Lato", sans-serif;
   cursor: pointer;
 }
 
-button:hover {
+.form__button:hover {
   color: #3a3A3a;
 }
 
-/* Heading */
-h3, 
-label[for='new-task'] {
+.form__label-new-task {
+  display: block;
+  margin: 0 0 20px;
+  padding: 30px 0 10px;
+  font-weight: 700;
+  font-size: 15px;
+  border-bottom: 2px solid #333;
+  text-transform: uppercase;
+}
+
+.form__input {
+  height: 21px;
+  margin: 0;
+  padding: 0 9px;
+  border: 1px solid #dDd;
+  font-size: 18px;
+  line-height: 18px;
+  background: #FFF;
+  border-radius: 6px;
+  font-family: "Lato", sans-serif;
+  color: #888;
+  outline:none;
+  flex-grow: 1;
+}
+
+.form__input_text {
+  display: none;
+}
+
+.form__input_checkbox {
+  margin: 0 10px;
+}
+
+.form__input_new-task {
+  width: 318px;
+}
+
+.form__input_text:focus {
   color: #333;
+}
+
+.form__title {
   font-weight: 700;
   font-size: 15px;
   border-bottom: 2px solid #333;
@@ -79,36 +93,12 @@ label[for='new-task'] {
   text-transform: uppercase;
 }
 
-input[type="text"] {
-  margin: 0;
-  font-size: 18px;
-  line-height: 18px;
-  height: 21px;
-  padding: 0 9px;
-  border: 1px solid #dDd;
-  background: #FFF;
-  border-radius: 6px;
-  font-family: Lato, sans-serif;
-  color: #888;
+.form__list {
+  margin:0;
+  padding: 0px;
 }
 
-input[type="text"]:focus {
-  color: #333;
-}
-
-/* New Task */
-label[for='new-task'] {
-  display: block;
-  margin: 0 0 20px;
-}
-
-input#new-task {
-  width: 318px;
-}
-
-/* Task list */
-li {
-  overflow: hidden;
+.form__item {
   padding: 20px 0;
   border-bottom: 1px solid #eee;
   display: flex;
@@ -116,23 +106,12 @@ li {
   align-items: center;
 }
 
-li > * {
-  vertical-align: middle;
-}
-
-li > input[type="checkbox"] {
-  margin: 0 10px;
-}
-
-li > label {
+.form__label {
   padding-left: 10px;
   box-sizing: border-box;
   font-size: 18px;
   width: 226px;
-}
-
-li > input[type="text"] {
-  width: 226px;
+  flex-grow: 1;
 }
 
 .delete{
@@ -150,11 +129,6 @@ button.delete img:hover {
 ul#completed-tasks label {
   text-decoration: line-through;
   color: #888;
-}
-
-/* Edit Task */
-ul li input[type=text] {
-  display: none;
 }
 
 ul li.editMode input[type=text] {

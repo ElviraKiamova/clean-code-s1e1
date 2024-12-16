@@ -17,28 +17,32 @@
     <form class="form" action="#" method="get" autocomplete="off">
       <div class="form__container">
         <label class="form__label-new-task" for="new-task">Add Item</label>
-        <input class="form__input-new-task task" id="new-task" type="text">
+        <input class="form__input" id="new-task" type="text">
         <button class="form__button" type="submit">Add</button>
       </div>
       <h3 class="form__title">Todo</h3>
-      <ul class="form__list-todo" id="incompleteTasks">
-        <li class="form__item-todo">
-          <input class="form__input-new-task" id="todo-task" type="checkbox">
-          <label class="task" for="todo-task">Pay Bills</label>
-          <input type="text" class="task">
+      <ul class="form__list form__list_todo" id="incompleteTasks">
+        <li class="form__item">
+          <input class="form__input_checkbox" id="todo-task" type="checkbox">
+          <label class="form__label" for="todo-task">Pay Bills</label>
+          <input class="form__input form__input_text" type="text">
           <button class="form__button edit" type="button">Edit</button>
           <button class="form__button delete" type="button" aria-label="delete-task"></button>
         </li>
-        <li class="form__item-todo editMode">
-          <input type="checkbox"><label class="task">Go Shopping</label><input type="text" value="Go Shopping" class="task">
+        <li class="form__item editMode">
+          <input class="form__input_checkbox" type="checkbox">
+          <label class="form__label">Go Shopping</label>
+          <input class="form__input form__input_text" type="text" value="Go Shopping">
           <button class="form__button edit" type="button">Save</button>
           <button class="form__button delete" type="button" aria-label="delete-task"></button>
         </li>
       </ul>
       <h3 class="form__title">Completed</h3>
-      <ul class="form__list-completed" id="completed-tasks">
-        <li class="form__item-completed">
-          <input type="checkbox" checked><label class="task">See the Doctor</label><input type="text" class="task">
+      <ul class="form__list form__list_completed" id="completed-tasks">
+        <li class="form__item">
+          <input class="form__input_checkbox" type="checkbox" checked>
+          <label class="form__label">See the Doctor</label>
+          <input class="form__input form__input_text" type="text">
           <button class="form__button edit" type="button">Edit</button>
           <button class="form__button delete" type="button" aria-label="delete-task"></button>
         </li>
