@@ -1,0 +1,14 @@
+.form__input {
+  height: 21px;
+  margin: 0;
+  padding: 0 9px;
+  border: 1px solid #dDd;
+  font-size: 18px;
+  line-height: 18px;
+  background: #FFF;
+  border-radius: 6px;
+  font-family: "Lato", sans-serif;
+  color: #888;
+  outline:none;
+  flex-grow: 1;
+}
