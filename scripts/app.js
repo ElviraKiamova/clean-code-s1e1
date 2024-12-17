@@ -66,24 +66,24 @@ function editTask() {
 }
 
 function deleteTask() {
-  const listItem = this.parentNode;
-  const ul = listItem.parentNode;
-  if (ul && listItem) ul.removeChild(listItem);
+  const listItemElement = this.parentNode;
+  const listElement = listItemElement.parentNode;
+  if (listElement && listItemElement) listElement.removeChild(listItemElement);
 }
 
 function taskCompleted() {
-  const listItem = this.parentNode;
-  if (listItem) {
-    completedListElement.appendChild(listItem);
-    bindTaskEvents(listItem, taskIncomplete);
+  const listItemElement = this.parentNode;
+  if (listItemElement) {
+    completedListElement.appendChild(listItemElement);
+    bindTaskEvents(listItemElement, taskIncomplete);
   }
 }
 
 function taskIncomplete() {
-  const listItem = this.parentNode;
-  if (listItem) {
-    todoListElement.appendChild(listItem);
-    bindTaskEvents(listItem, taskCompleted);
+  const listItemElement = this.parentNode;
+  if (listItemElement) {
+    todoListElement.appendChild(listItemElement);
+    bindTaskEvents(listItemElement, taskCompleted);
   }
 }
 
