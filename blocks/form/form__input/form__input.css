@@ -12,3 +12,7 @@
   outline:none;
   flex-grow: 1;
 }
+
+.form__input:focus {
+  color: #333;
+}

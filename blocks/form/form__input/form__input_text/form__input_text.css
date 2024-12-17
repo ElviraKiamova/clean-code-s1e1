@@ -1,7 +1,3 @@
 .form__input_text {
   display: none;
 }
-
-.form__input_text:focus {
-  color: #333;
-}
