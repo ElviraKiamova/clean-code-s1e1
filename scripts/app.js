@@ -3,39 +3,41 @@ const addButtonElement = document.querySelector(".form__button_add");
 const todoListElement = document.querySelector(".form__list_todo");
 const completedListElement = document.getElementById("completed-tasks");
 
-//New task list item
 function createNewTaskElement(taskString) {
   const listItemElement = document.createElement("li");
+  listItemElement.className = "form__item";
+
   const checkBoxElement = document.createElement("input");
   const labelElement = document.createElement("label");
   const editInputElement = document.createElement("input");
   const editButtonElement = document.createElement("button");
   const deleteButtonElement = document.createElement("button");
-  const deleteButtonImgElement = document.createElement("img");
 
   labelElement.innerText = taskString;
-  labelElement.className = 'task';
+  labelElement.className = 'form__label';
 
   checkBoxElement.type = "checkbox";
+  checkBoxElement.className = "form__input_checkbox";
   editInputElement.type = "text";
-  editInputElement.className = "task";
+  editInputElement.className = "form__input";
 
   editButtonElement.innerText = "Edit";
-  editButtonElement.className = "edit";
+  editButtonElement.className = "form__button edit";
 
-  deleteButtonElement.className = "delete";
-  deleteButtonImgElement.src = '/assets/remove.svg';
-  deleteButtonElement.appendChild(deleteButtonImgElement);
+  deleteButtonElement.className = 'form__button form__button_delete';
+  deleteButtonElement.setAttribute('aria-label', 'delete-task');
 
   listItemElement.appendChild(checkBoxElement);
   listItemElement.appendChild(labelElement);
   listItemElement.appendChild(editInputElement);
   listItemElement.appendChild(editButtonElement);
   listItemElement.appendChild(deleteButtonElement);
+
   return listItemElement;
 }
 
-function addTask() {
+function addTask(event) {
+  event.preventDefault();
   if (!taskInputElement.value) return;
   const listItemElement = createNewTaskElement(taskInputElement.value);
   todoListElement.appendChild(listItemElement);
@@ -43,74 +45,66 @@ function addTask() {
   taskInputElement.value = "";
 }
 
-//Edit an existing task.
-function editTask () {
+function editTask() {
   const listItemElement = this.parentNode;
   const editInputElement = listItemElement.querySelector('input[type=text]');
   const labelElement = listItemElement.querySelector("label");
-  const editBtnElement = listItemElement.querySelector(".edit");
-  const containsClass = listItemElement.classList.contains("editMode");
-  //If class of the parent is .editmode
-  if(containsClass) {
-    //switch to .editmode
-    //label becomes the inputs value.
-    labelElement.innerText = editInputElement.value;
-    editBtnElement.innerText = "Edit";
-  } else {
-    editInputElement.value = labelElement.innerText;
-    editBtnElement.innerText = "Save";
-  }
-  //toggle .editmode on the parent.
-  listItemElement.classList.toggle("editMode");
-};
+  const editBtnElement = this;
+  const isEditMode = listItemElement.classList.toggle("editMode");
 
-//Delete task.
+  if (isEditMode) {
+    editInputElement.value = labelElement.innerText;
+    editInputElement.style.display = "block";
+    labelElement.classList.add("form__label_edit-mode");
+    editBtnElement.innerText = "Save";
+  } else {
+    labelElement.innerText = editInputElement.value;
+    editInputElement.style.display = "none";
+    labelElement.classList.remove("form__label_edit-mode");
+    editBtnElement.innerText = "Edit";
+  }
+}
+
 function deleteTask() {
   const listItem = this.parentNode;
   const ul = listItem.parentNode;
-  ul.removeChild(listItem);
+  if (ul && listItem) ul.removeChild(listItem);
 }
 
-//Mark task completed
 function taskCompleted() {
   const listItem = this.parentNode;
-  completedListElement.appendChild(listItem);
-  bindTaskEvents(listItem, taskIncomplete);
+  if (listItem) {
+    completedListElement.appendChild(listItem);
+    bindTaskEvents(listItem, taskIncomplete);
+  }
 }
 
 function taskIncomplete() {
   const listItem = this.parentNode;
-  todoListElement.appendChild(listItem);
-  bindTaskEvents(listItem,taskCompleted);
+  if (listItem) {
+    todoListElement.appendChild(listItem);
+    bindTaskEvents(listItem, taskCompleted);
+  }
 }
 
-//The glue to hold it all together.
-//Set the click handler to the addTask function.
-addButtonElement.addEventListener("click",addTask);
-
-function bindTaskEvents(taskListItem,checkBoxEventHandler) {
+function bindTaskEvents(taskListItem, checkBoxEventHandler) {
   const checkBoxElement = taskListItem.querySelector("input[type=checkbox]");
   const editButtonElement = taskListItem.querySelector("button.edit");
-  const deleteButtonElement = taskListItem.querySelector("button.delete");
-  //Bind editTask to edit button.
-  editButtonElement.onclick = editTask;
-  //Bind deleteTask to delete button.
-  deleteButtonElement.onclick = deleteTask;
-  //Bind taskCompleted to checkBoxEventHandler.
-  checkBoxElement.onchange = checkBoxEventHandler;
+  const deleteButtonElement = taskListItem.querySelector("button.form__button_delete");
+
+  if (checkBoxElement) checkBoxElement.onchange = checkBoxEventHandler;
+
+  if (editButtonElement) editButtonElement.onclick = (event) => editTask.call(event.target);
+
+  if (deleteButtonElement) deleteButtonElement.onclick = deleteTask;
 }
 
-//cycle over incompleteTaskHolder ul list items
-//for each list item
-for (let i = 0; i < todoListElement.children.length; i++){
-  //bind events to list items chldren(tasksCompleted)
+addButtonElement.addEventListener("click", addTask);
+
+for (let i = 0; i < todoListElement.children.length; i++) {
   bindTaskEvents(todoListElement.children[i], taskCompleted);
 }
 
-//cycle over completedTasksHolder ul list items
-for (let i = 0; i < completedListElement.children.length; i++){
-  //bind events to list items chldren(tasksIncompleted)
-  bindTaskEvents(completedListElement.children[i],taskIncomplete);
+for (let i = 0; i < completedListElement.children.length; i++) {
+  bindTaskEvents(completedListElement.children[i], taskIncomplete);
 }
-
-//Change edit to save when you are in edit mode.
