@@ -20,6 +20,7 @@ function createNewTaskElement(taskString) {
   checkBoxElement.className = "form__input_checkbox";
   editInputElement.type = "text";
   editInputElement.className = "form__input";
+  editInputElement.style.display = "none";
 
   editButtonElement.innerText = "Edit";
   editButtonElement.className = "form__button edit";
