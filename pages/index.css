@@ -15,6 +15,7 @@
 @import url("../blocks/form/form__label/form__label.css");
 @import url("../blocks/form/form__label/form__label_new-task/form__label_new-task.css");
 @import url("../blocks/form/form__label/form__label_edit-mode/form__label_edit-mode.css");
+@import url("../blocks/form/form__label/form__label_completed/form__label_completed.css");
 @import url("../blocks/form/form__input/form__input.css");
 @import url("../blocks/form/form__input/form__input_text/form__input_text.css");
 @import url("../blocks/form/form__input/form__input_checkbox/form__input_checkbox.css");

@@ -58,11 +58,13 @@ function editTask() {
     editInputElement.style.display = "block";
     labelElement.classList.add("form__label_edit-mode");
     editBtnElement.innerText = "Save";
+    labelElement.classList.add("form__label_completed");
   } else {
     labelElement.innerText = editInputElement.value;
     editInputElement.style.display = "none";
     labelElement.classList.remove("form__label_edit-mode");
     editBtnElement.innerText = "Edit";
+    labelElement.classList.add("form__label_completed");
   }
 }
 
