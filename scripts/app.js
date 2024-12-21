@@ -84,9 +84,11 @@ function taskCompleted() {
 
 function taskIncomplete() {
   const listItemElement = this.parentNode;
+  const labelElement = listItemElement.querySelector("label");
   if (listItemElement) {
     todoListElement.appendChild(listItemElement);
     bindTaskEvents(listItemElement, taskCompleted);
+    labelElement.classList.remove("form__label_completed");
   }
 }
 
