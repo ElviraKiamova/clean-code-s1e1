@@ -1,0 +1,13 @@
+.form__button {
+  background: none;
+  width: 60px;
+  border: 0px;
+  color: #888;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+}
+
+.form__button:hover {
+  color: #3a3A3a;
+}

@@ -1,0 +1,10 @@
+.form__button_delete {
+  height: 2em;
+  background: url(../../../../assets/remove.svg) no-repeat center;
+  transform: rotateZ(45deg);
+  transition: transform 200ms ease-in;
+}
+
+.form__button_delete:hover {
+  transform: rotateZ(0);
+}
